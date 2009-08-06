@@ -105,7 +105,8 @@ class PerformInstall(threading.Thread):
 			os.system("sed 's/debian/"+ hostname + "/g' /etc/hosts > /tmp/hosts && mv /tmp/hosts /etc/hosts")
 
 			print "Removing mint-debian-installer from the target system"
-			os.system("apt-get remove mint-debian-install --yes --force-yes")
+			os.system("rm -rf /home/" + username + "/Desktop/mint-debian-installer.desktop")
+			os.system("apt-get remove mint-debian-installer --yes --force-yes")
 
 			print "Finished"			
 
