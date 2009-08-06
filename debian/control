@@ -7,7 +7,7 @@ Standards-Version: 3.7.2
 
 Package: mint-debian-installer
 Architecture: all
-Depends: python (>= 2.4), python (<< 3), python-gtk2, python-glade2, rsync
+Depends: python (>= 2.4), python (<< 3), python-gtk2, python-glade2, rsync, grub
 Description: Linux Mint Debian live CD installer
  This is a live CD installer written for Linux Mint Debian Edition.
 

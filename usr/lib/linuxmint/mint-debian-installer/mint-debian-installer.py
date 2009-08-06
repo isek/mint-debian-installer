@@ -53,11 +53,13 @@ class PerformInstall(threading.Thread):
 			password = self.wTree.get_widget("entry_password1").get_text().strip()
 			hostname = self.wTree.get_widget("entry_hostname").get_text().strip()
 			grub = self.wTree.get_widget("entry_grub").get_text().strip()
+			grubIsToBeInstalled = self.wTree.get_widget("check_grub").get_active()
 			(model, iter) = self.wTree.get_widget("treeview_partitions").get_selection().get_selected()
 			partition = model.get_value(iter, 0)
 			gtk.gdk.threads_leave()
 
 			print "Formatting " + partition + " with ext3"
+			os.system("umount " + partition)
 			os.system("mkfs.ext3 " + partition)
 			print "Preparing /target"
 			os.system("mkdir -p /target")
@@ -68,16 +70,37 @@ class PerformInstall(threading.Thread):
 			print "Copying file system to /target"
 			os.system("rsync -a / /target/ --exclude=/{target,live,sys,proc,media}/")
 			print "Chrooting into /target"
-			os.chroot("/target/")
-			os.system("touch /here_we_are")
-			print "Installing Grub"
-			os.system("grub-install " + grub)
-			print "Updating Grub"
-			os.system("update-grub")
+			os.chroot("/target/")	
+			if (grubIsToBeInstalled):
+				print "Installing Grub"
+				os.system("grub-install " + grub)
+				print "Updating Grub"
+				os.system("update-grub")
 			print "Setting up fstab"
 			os.system("rm -rf /etc/fstab")
 			os.system("echo \"proc	/proc	proc defaults	0	0\" > /etc/fstab")
 			os.system("echo \"" + partition + "	/	ext3	defaults	0	1\" >> /etc/fstab")
+
+			print "Setting up user " + username
+			os.system("usermod -l " + username + " user")
+			os.system("groupmod -n " + username + " user")
+			os.system("usermod -d /home/" + username + " -m " + username)
+			os.system("usermod -c \"" + name + "\" " + username)
+
+			print "Setting up sudo"
+			os.system("sed 's/user/%admin/g' /etc/sudoers > /tmp/sudoers && mv /tmp/sudoers /etc/sudoers")
+			os.system("groupadd admin")
+			os.system("usermod -a -G admin " + username)
+
+			print "Setting up password"
+			os.system("echo \"" + username + ":" + password + "\" > /tmp/password")
+			os.system("cat /tmp/password | chpasswd")
+
+			print "Setting up the hostname: " + hostname
+			os.system("echo '" + hostname + "' > /etc/hostname")
+			os.system("hostname " + hostname)
+			os.system("sed 's/debian/"+ hostname + "/g' /etc/hosts > /tmp/hosts && mv /tmp/hosts /etc/hosts")
+
 			print "Finished"			
 
 			#Tell the GUI we're back
