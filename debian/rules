@@ -50,6 +50,7 @@ install: build
 	#$(MAKE) install DESTDIR=$(CURDIR)/debian/mint-debian-installer
 	mkdir -p $(CURDIR)/debian/mint-debian-installer
 	cp -r $(CURDIR)/usr $(CURDIR)/debian/mint-debian-installer/
+	cp $(CURDIR)/usr/share/applications/mint-debian-installer.desktop $(CURDIR)/etc/skel/Desktop/mint-debian-installer.desktop
 	cp -r $(CURDIR)/etc $(CURDIR)/debian/mint-debian-installer/
 
 # Build architecture-independent files here.
