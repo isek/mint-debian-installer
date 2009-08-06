@@ -91,6 +91,7 @@ class PerformInstall(threading.Thread):
 
 			print "Setting up sudo"
 			os.system("sed 's/user/%admin/g' /etc/sudoers > /tmp/sudoers && mv /tmp/sudoers /etc/sudoers")
+			os.system("chmod 0440 /etc/sudoers")
 			os.system("groupadd admin")
 			os.system("usermod -a -G admin " + username)
 
@@ -102,6 +103,9 @@ class PerformInstall(threading.Thread):
 			os.system("echo '" + hostname + "' > /etc/hostname")
 			os.system("hostname " + hostname)
 			os.system("sed 's/debian/"+ hostname + "/g' /etc/hosts > /tmp/hosts && mv /tmp/hosts /etc/hosts")
+
+			print "Removing mint-debian-installer from the target system"
+			os.system("apt-get remove mint-debian-install --yes --force-yes")
 
 			print "Finished"			
 
