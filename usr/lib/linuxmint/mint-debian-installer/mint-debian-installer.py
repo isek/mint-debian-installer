@@ -69,6 +69,8 @@ class PerformInstall(threading.Thread):
 			os.system("mount " + partition + " /target")
 			print "Copying file system to /target"
 			os.system("rsync -a / /target/ --exclude=/{target,live,sys,proc,media}/")
+			print "Creating system mount points for proc, sys, media"
+			os.system("mkdir -p /target/proc /target/sys /target/media")
 			print "Chrooting into /target"
 			os.chroot("/target/")	
 			if (grubIsToBeInstalled):
