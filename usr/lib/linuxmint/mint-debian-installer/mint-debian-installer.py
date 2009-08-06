@@ -57,19 +57,29 @@ class PerformInstall(threading.Thread):
 			partition = model.get_value(iter, 0)
 			gtk.gdk.threads_leave()
 
+			print "Formatting " + partition + " with ext3"
 			os.system("mkfs.ext3 " + partition)
+			print "Preparing /target"
 			os.system("mkdir -p /target")
+			os.system("umount /target")
 			os.system("rm -rf /target/*")
+			print "Mounting " + partition + " in /target"
 			os.system("mount " + partition + " /target")
+			print "Copying file system to /target"
 			os.system("rsync -a / /target/ --exclude=/{target,live,sys,proc,media}/")
+			print "Chrooting into /target"
 			os.chroot("/target/")
 			os.system("touch /here_we_are")
+			print "Installing Grub"
 			os.system("grub-install " + grub)
+			print "Updating Grub"
 			os.system("update-grub")
+			print "Setting up fstab"
 			os.system("rm -rf /etc/fstab")
 			os.system("echo \"proc	/proc	proc defaults	0	0\" > /etc/fstab")
 			os.system("echo \"" + partition + "	/	ext3	defaults	0	1\" >> /etc/fstab")
-			
+			print "Finished"			
+
 			#Tell the GUI we're back
 			gtk.gdk.threads_enter()
 			self.wTree.get_widget("main_window").window.set_cursor(None)		
