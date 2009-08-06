@@ -1,0 +1,3 @@
+#!/bin/bash
+
+xgettext --language=Python --keyword=_ --output=mint-debian-installer.pot usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py

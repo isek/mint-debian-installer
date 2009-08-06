@@ -1,0 +1,1051 @@
+<?xml version="1.0"?>
+<glade-interface>
+  <!-- interface-requires gtk+ 2.16 -->
+  <!-- interface-naming-policy toplevel-contextual -->
+  <widget class="GtkWindow" id="main_window">
+    <property name="visible">True</property>
+    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+    <property name="title" translatable="yes">mintBackup</property>
+    <property name="window_position">center-always</property>
+    <property name="default_width">300</property>
+    <property name="default_height">400</property>
+    <property name="icon">icon.png</property>
+    <child>
+      <widget class="GtkVBox" id="vbox1">
+        <property name="visible">True</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <widget class="GtkMenuBar" id="menubar1">
+            <property name="visible">True</property>
+            <child>
+              <widget class="GtkMenuItem" id="menuitem1">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">_File</property>
+                <property name="use_underline">True</property>
+                <child>
+                  <widget class="GtkMenu" id="menu1">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkImageMenuItem" id="menu_quit">
+                        <property name="label">gtk-quit</property>
+                        <property name="visible">True</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </widget>
+                    </child>
+                  </widget>
+                </child>
+              </widget>
+            </child>
+            <child>
+              <widget class="GtkMenuItem" id="menuitem4">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">_Help</property>
+                <property name="use_underline">True</property>
+                <child>
+                  <widget class="GtkMenu" id="menu3">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkImageMenuItem" id="menu_about">
+                        <property name="label">gtk-about</property>
+                        <property name="visible">True</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </widget>
+                    </child>
+                  </widget>
+                </child>
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="expand">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkNotebook" id="notebook">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="border_width">6</property>
+            <property name="show_tabs">False</property>
+            <property name="show_border">False</property>
+            <child>
+              <widget class="GtkVBox" id="vbox5">
+                <property name="visible">True</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">3</property>
+                <child>
+                  <widget class="GtkLabel" id="label4">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">&lt;big&gt;Welcome to the Linux Mint Debian Edition&lt;/big&gt;</property>
+                    <property name="use_markup">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHSeparator" id="hseparator3">
+                    <property name="visible">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label15">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">This installer will install Linux Mint Debian Edition on your hard drive.</property>
+                  </widget>
+                  <packing>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHSeparator" id="hseparator4">
+                    <property name="visible">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox2">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkLabel" id="label16">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Step 1 of 5</property>
+                      </widget>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkHButtonBox" id="hbuttonbox1">
+                        <property name="visible">True</property>
+                        <child>
+                          <widget class="GtkButton" id="button_quit_1">
+                            <property name="label" translatable="yes">gtk-quit</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkButton" id="button_forward_1">
+                            <property name="label" translatable="yes">gtk-go-forward</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+              </widget>
+            </child>
+            <child>
+              <widget class="GtkLabel" id="label1">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">page 1</property>
+              </widget>
+              <packing>
+                <property name="tab_fill">False</property>
+                <property name="type">tab</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkVBox" id="vbox3">
+                <property name="visible">True</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">3</property>
+                <child>
+                  <widget class="GtkLabel" id="label5">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">&lt;big&gt;Where do you want to install Linux Mint Debian Edition?&lt;/big&gt;</property>
+                    <property name="use_markup">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHSeparator" id="hseparator6">
+                    <property name="visible">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label18">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">&lt;small&gt;The following hard drives were found in your computer:&lt;/small&gt;</property>
+                    <property name="use_markup">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkScrolledWindow" id="scrolledwindow2">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="hscrollbar_policy">automatic</property>
+                    <property name="vscrollbar_policy">automatic</property>
+                    <property name="shadow_type">in</property>
+                    <child>
+                      <widget class="GtkTreeView" id="treeview_hard_disks">
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="headers_visible">False</property>
+                      </widget>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label19">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">Choose a partition to install Linux Mint Debian Edition.</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkScrolledWindow" id="scrolledwindow1">
+                    <property name="height_request">31</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="hscrollbar_policy">automatic</property>
+                    <property name="vscrollbar_policy">automatic</property>
+                    <property name="shadow_type">in</property>
+                    <child>
+                      <widget class="GtkTreeView" id="treeview_partitions">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                      </widget>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="position">5</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHSeparator" id="hseparator5">
+                    <property name="visible">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">6</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox12">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkLabel" id="label17">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Step 2 of 5</property>
+                      </widget>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkHButtonBox" id="hbuttonbox3">
+                        <property name="visible">True</property>
+                        <child>
+                          <widget class="GtkButton" id="button_quit_2">
+                            <property name="label" translatable="yes">gtk-quit</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkButton" id="button_back_2">
+                            <property name="label" translatable="yes">gtk-go-back</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkButton" id="button_forward_2">
+                            <property name="label" translatable="yes">gtk-go-forward</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">7</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkLabel" id="label2">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">page 2</property>
+              </widget>
+              <packing>
+                <property name="position">1</property>
+                <property name="tab_fill">False</property>
+                <property name="type">tab</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkVBox" id="vbox4">
+                <property name="visible">True</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">3</property>
+                <child>
+                  <widget class="GtkLabel" id="label6">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">&lt;big&gt;Who are you?&lt;/big&gt;</property>
+                    <property name="use_markup">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHSeparator" id="hseparator1">
+                    <property name="visible">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label7">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">What is your name?</property>
+                  </widget>
+                  <packing>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox4">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkEntry" id="entry_name">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="invisible_char">&#x25CF;</property>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label8">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">What name do you want to use to log in?</property>
+                  </widget>
+                  <packing>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox5">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkEntry" id="entry_username">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="invisible_char">&#x25CF;</property>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="position">5</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label9">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">&lt;small&gt;If more than one person will use this computer, you can set up multiple accounts after installation.&lt;/small&gt;</property>
+                    <property name="use_markup">True</property>
+                  </widget>
+                  <packing>
+                    <property name="position">6</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label10">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">Choose a password.</property>
+                  </widget>
+                  <packing>
+                    <property name="position">7</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox7">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkEntry" id="entry_password1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="visibility">False</property>
+                        <property name="invisible_char">&#x25CF;</property>
+                        <property name="invisible_char_set">True</property>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkEntry" id="entry_password2">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="visibility">False</property>
+                        <property name="invisible_char">&#x25CF;</property>
+                        <property name="invisible_char_set">True</property>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label11">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">&lt;small&gt;Enter the same password twice, so that it can be checked for typing errors.&lt;/small&gt;</property>
+                    <property name="use_markup">True</property>
+                  </widget>
+                  <packing>
+                    <property name="position">9</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label12">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">What is the name of this computer?</property>
+                  </widget>
+                  <packing>
+                    <property name="position">10</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox8">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkEntry" id="entry_hostname">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="invisible_char">&#x25CF;</property>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="position">11</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label13">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">&lt;small&gt;This name will be used if you make the computer visible to others on the network.&lt;/small&gt;</property>
+                    <property name="use_markup">True</property>
+                  </widget>
+                  <packing>
+                    <property name="position">12</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHSeparator" id="hseparator2">
+                    <property name="visible">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">13</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox11">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkLabel" id="label14">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Step 3 of 5</property>
+                      </widget>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkHButtonBox" id="hbuttonbox2">
+                        <property name="visible">True</property>
+                        <child>
+                          <widget class="GtkButton" id="button_quit_3">
+                            <property name="label" translatable="yes">gtk-quit</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkButton" id="button_back_3">
+                            <property name="label" translatable="yes">gtk-go-back</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkButton" id="button_forward_3">
+                            <property name="label" translatable="yes">gtk-go-forward</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">14</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkLabel" id="label3">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">page 3</property>
+              </widget>
+              <packing>
+                <property name="position">2</property>
+                <property name="tab_fill">False</property>
+                <property name="type">tab</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkVBox" id="vbox2">
+                <property name="visible">True</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">3</property>
+                <child>
+                  <widget class="GtkLabel" id="label22">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">&lt;big&gt;Avanced stuff&lt;/big&gt;</property>
+                    <property name="use_markup">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHSeparator" id="hseparator8">
+                    <property name="visible">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox6">
+                    <property name="visible">True</property>
+                    <property name="spacing">3</property>
+                    <child>
+                      <widget class="GtkCheckButton" id="check_grub">
+                        <property name="label" translatable="yes">Install Grub in: </property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkEntry" id="entry_grub">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="invisible_char">&#x25CF;</property>
+                        <property name="text" translatable="yes">hd0</property>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHSeparator" id="hseparator7">
+                    <property name="visible">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox1">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkLabel" id="label21">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Step 4 of 5</property>
+                      </widget>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkHButtonBox" id="hbuttonbox4">
+                        <property name="visible">True</property>
+                        <child>
+                          <widget class="GtkButton" id="button_quit_4">
+                            <property name="label" translatable="yes">gtk-quit</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkButton" id="button_back_4">
+                            <property name="label" translatable="yes">gtk-go-back</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkButton" id="button_forward_4">
+                            <property name="label" translatable="yes">gtk-go-forward</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkLabel" id="label20">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">page 4</property>
+              </widget>
+              <packing>
+                <property name="position">3</property>
+                <property name="tab_fill">False</property>
+                <property name="type">tab</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkVBox" id="vbox6">
+                <property name="visible">True</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">3</property>
+                <child>
+                  <widget class="GtkLabel" id="label24">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">&lt;big&gt;Summary&lt;/big&gt;</property>
+                    <property name="use_markup">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHSeparator" id="hseparator10">
+                    <property name="visible">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox9">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkLabel" id="label_summary_name">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Your name is &lt;b&gt;John Doe&lt;/b&gt;</property>
+                        <property name="use_markup">True</property>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox10">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkLabel" id="label_summary_username">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Your user name will be &lt;b&gt;John&lt;/b&gt;</property>
+                        <property name="use_markup">True</property>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox14">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkLabel" id="label_summary_hostname">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Your computer will be called &lt;b&gt;blackstar&lt;/b&gt;</property>
+                        <property name="use_markup">True</property>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox15">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkLabel" id="label_summary_partition">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Linux Mint Debian edition will be installed in &lt;b&gt;/dev/sda0&lt;/b&gt;</property>
+                        <property name="use_markup">True</property>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">5</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox16">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkLabel" id="label_summary_grub">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">The grub bootloader will be installed in &lt;b&gt;hd9&lt;/b&gt;</property>
+                        <property name="use_markup">True</property>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">6</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label31">
+                    <property name="visible">True</property>
+                  </widget>
+                  <packing>
+                    <property name="position">7</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHSeparator" id="hseparator9">
+                    <property name="visible">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHBox" id="hbox3">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkLabel" id="label25">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Step 5 of 5</property>
+                      </widget>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkHButtonBox" id="hbuttonbox5">
+                        <property name="visible">True</property>
+                        <child>
+                          <widget class="GtkButton" id="button_quit_5">
+                            <property name="label" translatable="yes">gtk-quit</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkButton" id="button_back_5">
+                            <property name="label" translatable="yes">gtk-go-back</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkButton" id="button_apply">
+                            <property name="label" translatable="yes">gtk-apply</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">9</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="position">4</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkLabel" id="label23">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">page 5</property>
+              </widget>
+              <packing>
+                <property name="position">4</property>
+                <property name="tab_fill">False</property>
+                <property name="type">tab</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</glade-interface>

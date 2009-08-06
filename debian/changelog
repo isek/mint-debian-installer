@@ -1,0 +1,6 @@
+mint-debian-installer (1.0.0) testing; urgency=low
+
+  * Initial release
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu,  6 Aug 2009 21:36:00 +0000
+

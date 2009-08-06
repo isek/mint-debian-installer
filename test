@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo rm -rf /usr/lib/linuxmint/mint-debian-installer
+sudo cp -R usr /
+mint-debian-installer
+

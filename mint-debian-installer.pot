@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-08-06 09:39+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:84
+msgid "Installation failed"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:84
+msgid "An error occurred during the installation:"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:98
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:293
+msgid "Installer"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:120
+msgid "Disk"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:142
+msgid "Partition"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:147
+msgid "Size"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:152
+msgid "Type"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:179
+msgid "GB"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:206
+msgid "Please select a partition"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:207
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:219
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:262
+msgid "mint-debian-installer"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:218
+msgid ""
+"The type of partition you selected isn't suitable. Please select a Linux "
+"partition."
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:239
+msgid "Please indicate your name"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:243
+msgid "Please choose a username"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:247
+msgid "You entered two different passwords"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:253
+msgid "Please choose a password"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:257
+msgid "Please choose a hostname"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:272
+#, python-format
+msgid "Your name is <b>%s</b>"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:274
+#, python-format
+msgid "Your username will be <b>%s</b>"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:276
+#, python-format
+msgid "Your computer will be called <b>%s</b>"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:278
+#, python-format
+msgid "The grub bootloader will be installed in <b>%s</b>"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:282
+#, python-format
+msgid "Linux Mint Debian edition will be installed in <b>%s</b>"
+msgstr ""
+
+#: usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py:291
+msgid "About"
+msgstr ""

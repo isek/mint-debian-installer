@@ -1,0 +1,7 @@
+#!/usr/bin/python
+
+import os
+
+os.system("/usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.py")
+
+
