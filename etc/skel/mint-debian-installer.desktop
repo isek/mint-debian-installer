@@ -1,1 +1,10 @@
-../../usr/share/applications/mint-debian-installer.desktop
+[Desktop Entry]
+Name=Install
+Comment=Install this system permanently to your hard disk
+Exec=gksu mint-debian-installer
+Icon=/usr/lib/linuxmint/mint-debian-installer/icon.png
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;System;Settings
+
