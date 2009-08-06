@@ -101,6 +101,7 @@ class mainWindow:
 	self.wTree.get_widget("button_forward_2").connect('clicked', self.validate_partition)
 	self.wTree.get_widget("button_forward_3").connect('clicked', self.validate_names)
 	self.wTree.get_widget("button_forward_4").connect('clicked', self.last_page)
+	self.wTree.get_widget("button_apply").connect('clicked', self.performInstall)
 
 	self.wTree.get_widget("button_back_2").connect('clicked', self.prev_page)
 	self.wTree.get_widget("button_back_3").connect('clicked', self.prev_page)

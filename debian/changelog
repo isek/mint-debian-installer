@@ -1,4 +1,4 @@
-mint-debian-installer (1.0.0) testing; urgency=low
+mint-debian-installer (1.0.0) debian; urgency=low
 
   * Initial release
 
