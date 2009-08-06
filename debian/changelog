@@ -1,6 +1,12 @@
+mint-debian-installer (1.0.1) debian; urgency=low
+
+  * Various added functionality, bug fixes.
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu,  6 Aug 2009 13:30:00 +0000
+
 mint-debian-installer (1.0.0) debian; urgency=low
 
   * Initial release
 
- -- Clement Lefebvre <root@linuxmint.com>  Thu,  6 Aug 2009 21:36:00 +0000
+ -- Clement Lefebvre <root@linuxmint.com>  Thu,  6 Aug 2009 10:36:00 +0000
 
