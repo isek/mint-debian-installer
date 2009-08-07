@@ -60,11 +60,14 @@ class PerformInstall(threading.Thread):
 
 			self.numSteps = 12
 
+			# Copy the icon there so it's accessible in chroot and after the installer was removed.
+			os.system("cp /usr/lib/linuxmint/mint-debian-installer/icon.png /usr/share/pixmaps/linuxmint.png")
+
 			gtk.gdk.threads_enter()
 			gladefile = "/usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.glade"
 			self.progressTree = gtk.glade.XML(gladefile,"progress_window")
 			self.progresswindow = self.progressTree.get_widget("progress_window")
-			self.progresswindow.set_icon_from_file("/usr/lib/linuxmint/mint-debian-installer/icon.png")
+			self.progresswindow.set_icon_from_file("/usr/share/pixmaps/linuxmint.png")
 			self.progresswindow.set_title("")
 			self.progresslabel = self.progressTree.get_widget("progress_label")
 			self.progressbar = self.progressTree.get_widget("progressbar")			
@@ -149,7 +152,7 @@ class PerformInstall(threading.Thread):
 
 			dialog = gtk.MessageDialog(None, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO, gtk.BUTTONS_NONE, _("Linux Mint Debian Edition was successfully installed on your computer. You can now eject the CD and reboot the system."))
 			dialog.set_title(_("mint-debian-installer"))
-			dialog.set_icon_from_file("/usr/lib/linuxmint/mint-debian-installer/icon.png")
+			dialog.set_icon_from_file("/usr/share/pixmaps/linuxmint.png")
 			dialog.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
 			dialog.connect('response', lambda dialog, response: self.closeApp())
 			dialog.show()	
@@ -158,7 +161,7 @@ class PerformInstall(threading.Thread):
 			print detail		
 			dialog = gtk.MessageDialog(None, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_NONE, _("An error occurred during the installation:") + " " + str(detail))
 			dialog.set_title(_("mint-debian-installer"))
-			dialog.set_icon_from_file("/usr/lib/linuxmint/mint-debian-installer/icon.png")
+			dialog.set_icon_from_file("/usr/share/pixmaps/linuxmint.png")
 			dialog.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
 			dialog.connect('response', lambda dialog, response: self.closeApp())
 			dialog.show()			
@@ -210,6 +213,8 @@ class mainWindow:
 
 	self.wTree.get_widget("menu_quit").connect('activate', gtk.main_quit)
 	self.wTree.get_widget("menu_about").connect('activate', self.open_about)	
+
+	self.wTree.get_widget("check_grub").set_active(True)
 
 	self.tree = self.wTree.get_widget("treeview_hard_disks")
 	self.column = gtk.TreeViewColumn(_("Disk"))
