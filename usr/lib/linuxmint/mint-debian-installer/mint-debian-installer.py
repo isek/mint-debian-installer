@@ -36,95 +36,149 @@ else:
 # i18n
 gettext.install("messages", "/usr/lib/linuxmint/mint-debian-installer/locale")
 
+class Choices:
+	name = None
+	username = None
+	password = None
+	hostname = None
+	grub = None
+	grubIsToBeInstalled = True
+ 	partition = None
+
+	def __init__(self):
+		pass
+
 class PerformInstall(threading.Thread):
 
-	def __init__(self, wTree):
+	def __init__(self, wTree, choices):
 		threading.Thread.__init__(self)		
 		self.wTree = wTree		
+		self.choices = choices
 
 	def run(self):
 		try:				
-			#Tell the GUI we're busy
+
+			self.numSteps = 12
+
 			gtk.gdk.threads_enter()
-			self.wTree.get_widget("main_window").window.set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))		
-			self.wTree.get_widget("main_window").set_sensitive(False)
-			name = self.wTree.get_widget("entry_name").get_text().strip()
-			username = self.wTree.get_widget("entry_username").get_text().strip()
-			password = self.wTree.get_widget("entry_password1").get_text().strip()
-			hostname = self.wTree.get_widget("entry_hostname").get_text().strip()
-			grub = self.wTree.get_widget("entry_grub").get_text().strip()
-			grubIsToBeInstalled = self.wTree.get_widget("check_grub").get_active()
-			(model, iter) = self.wTree.get_widget("treeview_partitions").get_selection().get_selected()
-			partition = model.get_value(iter, 0)
+			gladefile = "/usr/lib/linuxmint/mint-debian-installer/mint-debian-installer.glade"
+			self.progressTree = gtk.glade.XML(gladefile,"progress_window")
+			self.progresswindow = self.progressTree.get_widget("progress_window")
+			self.progresswindow.set_icon_from_file("/usr/lib/linuxmint/mint-debian-installer/icon.png")
+			self.progresswindow.set_title("")
+			self.progresslabel = self.progressTree.get_widget("progress_label")
+			self.progressbar = self.progressTree.get_widget("progressbar")			
+			self.progresswindow.show()
 			gtk.gdk.threads_leave()
 
-			print "Formatting " + partition + " with ext3"
-			os.system("umount " + partition)
-			os.system("mkfs.ext3 " + partition)
-			print "Preparing /target"
+			self.progress(0)
+
+			self.report("Formatting " + self.choices.partition + " with ext3")
+			os.system("umount " + self.choices.partition)
+			os.system("mkfs.ext3 " + self.choices.partition)
+			self.progress(1)
+
+			self.report("Preparing /target")			
 			os.system("mkdir -p /target")
 			os.system("umount /target")
 			os.system("rm -rf /target/*")
-			print "Mounting " + partition + " in /target"
-			os.system("mount " + partition + " /target")
-			print "Copying file system to /target"
+			self.progress(2)
+
+			self.report("Mounting " + self.choices.partition + " in /target")
+			os.system("mount " + self.choices.partition + " /target")
+			self.progress(3)
+
+			self.report("Copying file system to /target")
 			os.system("rsync -a / /target/ --exclude=/{target,live,sys,proc,media}/")
-			print "Creating system mount points for proc, sys, media"
+			self.progress(4)
+
+			self.report("Creating system mount points for proc, sys, media")
 			os.system("mkdir -p /target/proc /target/sys /target/media")
-			print "Chrooting into /target"
+			self.progress(5)
+
+			self.report("Chrooting into /target")
 			os.chroot("/target/")	
-			if (grubIsToBeInstalled):
-				print "Installing Grub"
-				os.system("grub-install " + grub)
-				print "Updating Grub"
+			if (self.choices.grubIsToBeInstalled):
+				self.report("Installing Grub in " + self.choices.grub)
+				os.system("grub-install " + self.choices.grub)
+				self.report("Updating Grub")
 				os.system("update-grub")
-			print "Setting up fstab"
+			self.progress(6)
+
+			self.report("Setting up fstab")
 			os.system("rm -rf /etc/fstab")
 			os.system("echo \"proc	/proc	proc defaults	0	0\" > /etc/fstab")
-			os.system("echo \"" + partition + "	/	ext3	defaults	0	1\" >> /etc/fstab")
+			os.system("echo \"" + self.choices.partition + "	/	ext3	defaults	0	1\" >> /etc/fstab")
+			self.progress(7)
 
-			print "Setting up user " + username
-			os.system("usermod -l " + username + " user")
-			os.system("groupmod -n " + username + " user")
-			os.system("usermod -d /home/" + username + " -m " + username)
-			os.system("usermod -c \"" + name + "\" " + username)
+			self.report("Setting up user " + self.choices.username)
+			os.system("usermod -l " + self.choices.username + " self.choices.user")
+			os.system("groupmod -n " + self.choices.username + " self.choices.user")
+			os.system("usermod -d /home/" + self.choices.username + " -m " + self.choices.username)
+			os.system("usermod -c \"" + self.choices.name + "\" " + self.choices.username)
+			self.progress(8)
 
-			print "Setting up sudo"
+			self.report("Setting up sudo")
 			os.system("sed 's/user/%admin/g' /etc/sudoers > /tmp/sudoers && mv /tmp/sudoers /etc/sudoers")
 			os.system("chmod 0440 /etc/sudoers")
 			os.system("groupadd admin")
-			os.system("usermod -a -G admin " + username)
+			os.system("usermod -a -G admin " + self.choices.username)
+			self.progress(9)
 
-			print "Setting up password"
-			os.system("echo \"" + username + ":" + password + "\" > /tmp/password")
+			self.report("Setting up password")
+			os.system("echo \"" + self.choices.username + ":" + self.choices.password + "\" > /tmp/password")
 			os.system("cat /tmp/password | chpasswd")
+			self.progress(10)
 
-			print "Setting up the hostname: " + hostname
-			os.system("echo '" + hostname + "' > /etc/hostname")
-			os.system("hostname " + hostname)
-			os.system("sed 's/debian/"+ hostname + "/g' /etc/hosts > /tmp/hosts && mv /tmp/hosts /etc/hosts")
+			self.report("Setting up the hostname: " + self.choices.hostname)
+			os.system("echo '" + self.choices.hostname + "' > /etc/hostname")
+			os.system("hostname " + self.choices.hostname)
+			os.system("sed 's/debian/"+ self.choices.hostname + "/g' /etc/hosts > /tmp/hosts && mv /tmp/hosts /etc/hosts")
+			self.progress(11)
 
-			print "Removing mint-debian-installer from the target system"
-			os.system("rm -rf /home/" + username + "/Desktop/mint-debian-installer.desktop")
+			self.report("Removing mint-debian-installer from the target system")
+			os.system("rm -rf /home/" + self.choices.username + "/Desktop/mint-debian-installer.desktop")
 			os.system("apt-get remove mint-debian-installer --yes --force-yes")
+			self.progress(12)
 
-			print "Finished"			
-
-			#Tell the GUI we're back
+			self.report("Finished")
+						
 			gtk.gdk.threads_enter()
-			self.wTree.get_widget("main_window").window.set_cursor(None)		
-			self.wTree.get_widget("main_window").set_sensitive(True)
+			self.progresswindow.hide()			
 			gtk.gdk.threads_leave()
 
-			gtk.main_quit()
+			dialog = gtk.MessageDialog(None, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO, gtk.BUTTONS_NONE, _("Linux Mint Debian Edition was successfully installed on your computer. You can now eject the CD and reboot the system."))
+			dialog.set_title(_("mint-debian-installer"))
+			dialog.set_icon_from_file("/usr/lib/linuxmint/mint-debian-installer/icon.png")
+			dialog.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
+			dialog.connect('response', lambda dialog, response: self.closeApp())
+			dialog.show()	
 
 		except Exception, detail:	
 			print detail		
-			gtk.gdk.threads_enter()
-			message = MessageDialog(_("Installation failed"), _("An error occurred during the installation:") + " " + str(detail), gtk.MESSAGE_ERROR)
-	    		message.show()			
-			gtk.gdk.threads_leave()	
-			gtk.main_quit()
+			dialog = gtk.MessageDialog(None, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_NONE, _("An error occurred during the installation:") + " " + str(detail))
+			dialog.set_title(_("mint-debian-installer"))
+			dialog.set_icon_from_file("/usr/lib/linuxmint/mint-debian-installer/icon.png")
+			dialog.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
+			dialog.connect('response', lambda dialog, response: self.closeApp())
+			dialog.show()			
+
+	def closeApp(self):
+		gtk.main_quit()
+
+	def report(self, text):
+		print text
+		gtk.gdk.threads_enter()	
+		self.progresslabel.set_text(text)
+		gtk.gdk.threads_leave()
+
+	def progress(self, step):
+		#import time
+		#time.sleep(5)
+		fraction = float(step)/float(self.numSteps)
+		gtk.gdk.threads_enter()
+		self.progressbar.set_fraction(fraction)
+		gtk.gdk.threads_leave()
 
 class mainWindow:
     """This is the main class for the application"""
@@ -324,7 +378,19 @@ class mainWindow:
 	self.wTree.get_widget("label_summary_partition").set_use_markup(True)
 
     def performInstall(self, widget):
-	install = PerformInstall(self.wTree)
+	# Hide main window
+	self.wTree.get_widget("main_window").hide()
+	# Get choices
+	choices = Choices()
+	choices.name = self.wTree.get_widget("entry_name").get_text().strip()
+	choices.username = self.wTree.get_widget("entry_username").get_text().strip()
+	choices.password = self.wTree.get_widget("entry_password1").get_text().strip()
+	choices.hostname = self.wTree.get_widget("entry_hostname").get_text().strip()
+	choices.grub = self.wTree.get_widget("entry_grub").get_text().strip()
+	choices.grubIsToBeInstalled = self.wTree.get_widget("check_grub").get_active()
+	(model, iter) = self.wTree.get_widget("treeview_partitions").get_selection().get_selected()
+	choices.partition = model.get_value(iter, 0)
+	install = PerformInstall(self.wTree, choices)
 	install.start()	
 
     def open_about(self, widget):

@@ -1,3 +1,9 @@
+mint-debian-installer (1.0.6) debian; urgency=low
+
+  * Added progress info and reporting to the GUI
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri,  7 Aug 2009 12:57:00 +0000
+
 mint-debian-installer (1.0.5) debian; urgency=low
 
   * Rules now copy desktop from usr to etc when the package is built.
